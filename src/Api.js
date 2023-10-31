@@ -29,7 +29,8 @@ export const exchangeCodeForTokens = async (code) => {
 };
 
 // Function to get expenses
-export const getExpenses = async (token,realmId,startPosition = 1, endPosition = 100) => {
+// export const getExpenses = async (token,realmId,startPosition = 1, endPosition = 100) => {
+export const getExpenses = async (token,realmId) => {
     console.log("from getExpenses",token)
     try {
         const response = await axios.get(`${BASE_URL}/qck/expenses`, {
@@ -37,8 +38,8 @@ export const getExpenses = async (token,realmId,startPosition = 1, endPosition =
                 'Authorization': `Bearer ${token}`
             },
             params: {
-                startPosition: startPosition,
-                endPosition: endPosition,
+                // startPosition: startPosition,
+                // endPosition: endPosition,
                 realmId:realmId
             }
         });
