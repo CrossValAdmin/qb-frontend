@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as Api from './Api';
 import { FaBook } from 'react-icons/fa'; 
+import { newAccessToken } from './Api';
 
 function MainPage({ token: propToken }) {
   const location = useLocation();
-  const token = location.state?.token;
+  let token = location.state?.token;  // make it mutable by using let
+  let refreshToken = location.state?.ref_token;
+  let expirationTime = location.state?.expirationTime;  // assuming this is a timestamp
   const code = location.state?.code;
   const realmId = location.state?.realmId;
   const navigate = useNavigate();
@@ -21,9 +24,29 @@ function MainPage({ token: propToken }) {
     }
   };
 
+  const refreshAccessToken = async () => {
+    try {
+      let newTokenData = await newAccessToken(refreshToken);
+      token = newTokenData.access_token;
+      refreshToken = newTokenData.refresh_token;
+      expirationTime = Date.now() + (newTokenData.expires_in * 1000);
+      return newTokenData.access_token;
+    } catch (error) {
+      console.error('Failed to refresh access token:', error);
+      throw error;  // Re-throw the error to handle it in the catch block where `refreshAccessToken` is called.
+    }
+  };
+  const hasTokenExpired = () => {
+    return Date.now() > expirationTime;
+  };
+
   const handleApiButtonClick = async (apiFunction) => {
     setIsLoading(true);  // Start loading
     try {
+      if (hasTokenExpired()) {
+        // If token expired, refresh it
+        const resp =await refreshAccessToken();
+      }
       const result = await apiFunction(token,realmId);
       navigate('/details', { state: { data: result } });
     } catch (error) {

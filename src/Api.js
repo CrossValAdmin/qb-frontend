@@ -28,6 +28,22 @@ export const exchangeCodeForTokens = async (code) => {
     }
 };
 
+// Function to get new access tokn by refresh token
+export const newAccessToken = async (refreshtoken) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/qck/new_access_token`, {
+            params: {
+                refresh_token: refreshtoken
+            }
+        });
+        console.log("tokenss",response.data)
+        return response.data;
+    } catch (error) {
+        console.error("Failed to exchange code for tokens:", error);
+        throw error;
+    }
+};
+
 // Function to get expenses
 // export const getExpenses = async (token,realmId,startPosition = 1, endPosition = 100) => {
 export const getExpenses = async (token,realmId) => {
