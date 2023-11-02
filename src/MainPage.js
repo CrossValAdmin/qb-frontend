@@ -43,6 +43,8 @@ function MainPage({ token: propToken }) {
   const handleApiButtonClick = async (apiFunction) => {
     setIsLoading(true);  // Start loading
     try {
+      let value=hasTokenExpired()
+      console.log("value",value)
       if (hasTokenExpired()) {
         // If token expired, refresh it
         const resp =await refreshAccessToken();
