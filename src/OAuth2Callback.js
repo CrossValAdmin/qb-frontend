@@ -23,8 +23,7 @@ function OAuth2Callback() {
     console.log("Received RealmId:", realmId);
     console.log("Received State:", state);
 
-    const expiresIn = response?.expires_in || 3600; // Default to 1 hour if not specified
-    const expirationTime = Date.now() + expiresIn * 1000;
+    ;
 
     if (code) {
       exchangeCodeForTokens(code)
@@ -33,6 +32,8 @@ function OAuth2Callback() {
             console.log("Access token:", response?.access_token);  
             console.log("Refresh token:", response?.refresh_token); 
             const ref_token = response?.refresh_token
+            const expiresIn = response?.expires_in || 3600; // Default to 1 hour if not specified
+            const expirationTime = Date.now() + expiresIn * 1000
             // Navigate user back to the MainPage post-authentication
             navigate('/', { state: { token: response?.access_token,ref_token,expirationTime, code, realmId } });
         })
