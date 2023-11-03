@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://jfgbzmauw5.execute-api.us-east-1.amazonaws.com'; // Please replace with your API Gateway URL
+const BASE_URL = process.env.REACT_APP_BASE_URL; 
 
 // Function to get Quickbooks URL
 export const getQuickbooksUrl = async () => {
@@ -54,8 +54,6 @@ export const getExpenses = async (token,realmId) => {
                 'Authorization': `Bearer ${token}`
             },
             params: {
-                // startPosition: startPosition,
-                // endPosition: endPosition,
                 realmId:realmId
             }
         });
