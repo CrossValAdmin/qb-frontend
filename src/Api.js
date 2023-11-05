@@ -5,7 +5,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 // Function to get Quickbooks URL
 export const getQuickbooksUrl = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}/qck`);
+        const response = await axios.get(`${BASE_URL}/qck/getQuickbooksUrl`);
         return response.data;
     } catch (error) {
         console.error("Failed to fetch Quickbooks URL:", error);
@@ -16,7 +16,7 @@ export const getQuickbooksUrl = async () => {
 // Function to exchange code for tokens
 export const exchangeCodeForTokens = async (code) => {
     try {
-        const response = await axios.get(`${BASE_URL}/qck/exchange`, {
+        const response = await axios.get(`${BASE_URL}/qck/exchangeCodeForTokens`, {
             params: {
                 code: code
             }
@@ -31,7 +31,7 @@ export const exchangeCodeForTokens = async (code) => {
 // Function to get new access tokn by refresh token
 export const newAccessToken = async (refreshtoken) => {
     try {
-        const response = await axios.get(`${BASE_URL}/qck/new_access_token`, {
+        const response = await axios.get(`${BASE_URL}/qck/newAccessToken`, {
             params: {
                 refresh_token: refreshtoken
             }
@@ -49,7 +49,7 @@ export const newAccessToken = async (refreshtoken) => {
 export const getExpenses = async (token,realmId) => {
     console.log("from getExpenses",token)
     try {
-        const response = await axios.get(`${BASE_URL}/qck/expenses`, {
+        const response = await axios.get(`${BASE_URL}/qck/getExpenses`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             },
@@ -68,7 +68,7 @@ export const getExpenses = async (token,realmId) => {
 // Function to get customer info
 export const getCustomerInfo = async (token,realmId) => {
     try {
-        const response = await axios.get(`${BASE_URL}/qck/customer_info`, {
+        const response = await axios.get(`${BASE_URL}/qck/getCustomerInfo`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -87,7 +87,7 @@ export const getCustomerInfo = async (token,realmId) => {
 // Function to get company info
 export const getCompanyInfo = async (token,realmId) => {
     try {
-        const response = await axios.get(`${BASE_URL}/qck/company_info`, {
+        const response = await axios.get(`${BASE_URL}/qck/getCompanyInfo`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             },
@@ -104,7 +104,7 @@ export const getCompanyInfo = async (token,realmId) => {
 
 export const getProfitLoss = async (token,realmId) => {
   try {
-      const response = await axios.get(`${BASE_URL}/qck/profitloss`, {
+      const response = await axios.get(`${BASE_URL}/qck/getProfitLoss`, {
           headers: {
               'Authorization': `Bearer ${token}`
           },
@@ -124,7 +124,7 @@ export const getProfitLoss = async (token,realmId) => {
 
 export const getCashFlow = async (token, realmId) => {
   try {
-      const response = await axios.get(`${BASE_URL}/qck/cashflow`,  {
+      const response = await axios.get(`${BASE_URL}/qck/getCashFlow`,  {
           headers: {
               'Authorization': `Bearer ${token}`
           },
@@ -142,7 +142,7 @@ export const getCashFlow = async (token, realmId) => {
   }
 };
 
-export const getBudget = async (token, realmId) => {
+export const Budget = async (token, realmId) => {
   try {
       const response = await axios.get(`${BASE_URL}/qck/Budget`, {
           headers: {

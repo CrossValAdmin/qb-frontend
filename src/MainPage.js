@@ -87,7 +87,7 @@ function MainPage({ token: propToken }) {
                 <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.getCompanyInfo)}>Get Company Info</button>
                 <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.getProfitLoss)}>Get Profit & Loss Info</button>
                 <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.getCashFlow)}>Get Cash Flow</button>
-                <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.getBudget)}>Get Budget</button>
+                <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.Budget)}>Get Budget</button>
                 <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.getInvoices)}>Get Invoices</button>
                 <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.getSalesData)}>Get Sales Data</button>
                 <button className="btn btn-info mb-2" onClick={() => handleApiButtonClick(Api.getDeposit)}>Get Deposit Info</button>
