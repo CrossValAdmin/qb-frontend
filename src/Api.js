@@ -117,7 +117,7 @@ export const getProfitLoss = async (token,realmId) => {
       console.log("from front",response.data)
       return response.data;
   } catch (error) {
-      console.error("Failed to fetch expenses:", error);
+      console.error("Failed to fetch profit loss:", error);
       throw error;
   }
 };
@@ -137,7 +137,7 @@ export const getCashFlow = async (token, realmId) => {
       console.log("from front",response.data)
       return response.data;
   } catch (error) {
-      console.error("Failed to fetch expenses:", error);
+      console.error("Failed to fetch cash flow:", error);
       throw error;
   }
 };
