@@ -104,7 +104,8 @@ export const getCompanyInfo = async (token,realmId) => {
 
 export const getProfitLoss = async (token,realmId) => {
   try {
-      const response = await axios.get(`${BASE_URL}/qck/getProfitLoss`, {
+    console.log("trying")
+      const response = await axios.get(`${BASE_URL}/qck/getProfitloss`, {
           headers: {
               'Authorization': `Bearer ${token}`
           },
@@ -124,7 +125,8 @@ export const getProfitLoss = async (token,realmId) => {
 
 export const getCashFlow = async (token, realmId) => {
   try {
-      const response = await axios.get(`${BASE_URL}/qck/getCashFlow`,  {
+    console.log("from front",response.data)
+      const response = await axios.get(`${BASE_URL}/qck/getCashflow`,  {
           headers: {
               'Authorization': `Bearer ${token}`
           },
