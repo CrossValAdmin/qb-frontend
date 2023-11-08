@@ -18,7 +18,7 @@ function MainPage({ token: propToken }) {
   const handleConnectClick = async () => {
     try {
       const response = await Api.getQuickbooksUrl();
-      console.log("data",response.data)
+      console.log("data",dataresponse.)
       window.location.href = response.data;  
     } catch (error) {
       console.error("Failed to get Quickbooks URL:", error);

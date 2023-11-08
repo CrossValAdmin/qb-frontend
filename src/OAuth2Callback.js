@@ -29,13 +29,13 @@ function OAuth2Callback() {
       exchangeCodeForTokens(code)
         .then(response => {
             console.log("Complete response object:", response);  
-            console.log("Access token:", response?.access_token);  
-            console.log("Refresh token:", response?.refresh_token); 
-            const ref_token = response?.refresh_token
-            const expiresIn = response?.expires_in || 3600; // Default to 1 hour if not specified
+            console.log("Access token:", response?.data?.access_token);  
+            console.log("Refresh token:", response?.data?.refresh_token); 
+            const ref_token = response?.data?.refresh_token
+            const expiresIn = response?.data?.expires_in || 3600; // Default to 1 hour if not specified
             const expirationTime = Date.now() + expiresIn * 1000
             // Navigate user back to the MainPage post-authentication
-            navigate('/', { state: { token: response?.access_token,ref_token,expirationTime, code, realmId } });
+            navigate('/', { state: { token: response?.data?.access_token,ref_token,expirationTime, code, realmId } });
         })
         .catch(error => {
           console.error("Failed to exchange code for tokens:", error);
