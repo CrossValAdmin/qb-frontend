@@ -6,6 +6,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 export const getQuickbooksUrl = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/qck/getQuickbooksUrl`);
+        console.log("response",response)
         return response.data;
     } catch (error) {
         console.error("Failed to fetch Quickbooks URL:", error);

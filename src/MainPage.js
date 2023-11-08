@@ -50,6 +50,7 @@ function MainPage({ token: propToken }) {
         const resp =await refreshAccessToken();
       }
       const result = await apiFunction(token,realmId);
+      console.log("result",result)
       navigate('/details', { state: { data: result } });
     } catch (error) {
       console.error("Error:", error);
