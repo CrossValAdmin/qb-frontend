@@ -28,10 +28,10 @@ function MainPage({ token: propToken }) {
   const refreshAccessToken = async () => {
     try {
       let newTokenData = await newAccessToken(refreshToken);
-      token = newTokenData.access_token;
-      refreshToken = newTokenData.refresh_token;
-      expirationTime = Date.now() + (newTokenData.expires_in * 1000);
-      return newTokenData.access_token;
+      token = newTokenData.data.access_token;
+      refreshToken = newTokenData.data.refresh_token;
+      expirationTime = Date.now() + (newTokenData.data.expires_in * 1000);
+      return newTokenData.data.access_token;
     } catch (error) {
       console.error('Failed to refresh access token:', error);
       throw error;  // Re-throw the error to handle it in the catch block where `refreshAccessToken` is called.
@@ -51,8 +51,8 @@ function MainPage({ token: propToken }) {
         const resp =await refreshAccessToken();
       }
       const result = await apiFunction(token,realmId);
-      console.log("result",result)
-      navigate('/details', { state: { data: result } });
+      console.log("result",result.data)
+      navigate('/details', { state: { data: result.data } });
     } catch (error) {
       console.error("Error:", error);
     } finally {
