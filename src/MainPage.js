@@ -18,7 +18,7 @@ function MainPage({ token: propToken }) {
   const handleConnectClick = async () => {
     try {
       const response = await Api.getQuickbooksUrl();
-      console.log("data",dataresponse.)
+      console.log("data",response.data)
       window.location.href = response.data;  
     } catch (error) {
       console.error("Failed to get Quickbooks URL:", error);
@@ -34,7 +34,7 @@ function MainPage({ token: propToken }) {
       return newTokenData.data.access_token;
     } catch (error) {
       console.error('Failed to refresh access token:', error);
-      throw error;  // Re-throw the error to handle it in the catch block where `refreshAccessToken` is called.
+      throw error;  
     }
   };
   const hasTokenExpired = () => {
