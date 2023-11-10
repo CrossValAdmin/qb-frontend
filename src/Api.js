@@ -32,7 +32,7 @@ export const exchangeCodeForTokens = async (code) => {
 // Function to get new access tokn by refresh token
 export const newAccessToken = async (refreshtoken) => {
     try {
-        const response = await axios.get(`${BASE_URL}/integration/newAccessToken`, {
+        const response = await axios.get(`${BASE_URL}/integration/refreshAccessToken`, {
             params: {
                 refresh_token: refreshtoken
             }
